@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CadastroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,14 +19,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::group(['prefix' => 'leads', 'as' => 'leads'], function () {
-    Route::get('/', [LeadController::class, 'index']);
-    Route::post('/', [LeadController::class, 'store']);
-    Route::get('/{id}', [LeadController::class, 'show']);
-    Route::put('/{id}', [LeadController::class, 'update']);
-    Route::delete('/{id}', [LeadController::class, 'destroy']);
+Route::group(['prefix' => 'cadastro', 'as' => 'cadastro'], function () {
+    Route::get('/', [CadastroController::class, 'index']);
+    Route::post('/', [CadastroController::class, 'store']);
+    Route::get('/{id}', [CadastroController::class, 'show']);
+    Route::put('/{id}', [CadastroController::class, 'update']);
+    Route::delete('/{id}', [CadastroController::class, 'destroy']);
 });
-
-Route::post('/cadastro', [\App\Http\Controllers\CadastroController::class, 'store']);
-Route::get('cadastro/{cpf}', [\App\Http\Controllers\CadastroController::class, 'show']);
-Route::get('cadastros', [\App\Http\Controllers\CadastroController::class, "index"]);

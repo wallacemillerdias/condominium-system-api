@@ -11,5 +11,5 @@ class Cadastro extends Model
 
     protected $table = 'cadastros';
 
-    protected $fillable = ['name', 'cpf', 'draw_numbers'];
+    protected $fillable = ['name', 'cpf'];
 }

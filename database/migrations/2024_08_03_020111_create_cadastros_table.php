@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('cadastros', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cpf')->unique();
-            $table->integer('draw_numbers')->nullable();
+            $table->string('cpf', 11)->unique();
             $table->timestamps();
         });
     }
