@@ -60,7 +60,7 @@ class CadastroController extends Controller
     {
         try {
             $cadastro = Cadastro::findOrFail($id);
-            $cadastro->update($request->all());
+            $cadastro->update($request->only('name'));
             $responseDto = new SuccessResponseDto(data: $cadastro, message: "Morador atualizado com sucesso.");
             return response()->json($responseDto->toArray(), StatusCode::HTTP_OK);
         } catch (ModelNotFoundException $e) {

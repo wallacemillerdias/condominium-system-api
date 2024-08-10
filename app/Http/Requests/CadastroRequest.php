@@ -23,9 +23,10 @@ class CadastroRequest extends FormRequest
 
     public function rules(): array
     {
+        $userId = $this->route('id');
         $rules = [
-            'name' => 'string|min:3|max:150',
-            'cpf' => 'cpf|unique:cadastros|required|cpf|min:11|max:11'
+            'name' => 'required|string|max:255|regex:/^[\pL\s]+$/u',
+            'cpf' => 'required|cpf|string|min:11|max:11|unique:cadastros,cpf,' . $userId
         ];
 
         if ($this->isMethod('POST')) {
@@ -45,6 +46,7 @@ class CadastroRequest extends FormRequest
             'name.string' => 'O campo nome deve ser do tipo texto.',
             'name.min' => 'O campo nome não poder ter menos de :min caracteres.',
             'name.max' => 'O campo nome não pode ter mais de :max caracteres.',
+            'name.regex' => 'O nome não pode conter números ou caracteres especiais.',
             'cpf.required' => 'O campo cpf é obrigatório.',
             'cpf.unique' => 'Este cpf já está cadastrado.',
             'cpf.min' => 'O campo CPF não pode ter menos de :min caracteres.',
