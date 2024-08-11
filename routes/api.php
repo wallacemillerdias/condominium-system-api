@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::group(['prefix' => 'cadastro', 'as' => 'cadastro'], function () {
+Route::group(['prefix' => 'cadastros', 'as' => 'cadastros'], function () {
     Route::get('/', [CadastroController::class, 'index']);
     Route::post('/', [CadastroController::class, 'store']);
     Route::get('/{id}', [CadastroController::class, 'show']);

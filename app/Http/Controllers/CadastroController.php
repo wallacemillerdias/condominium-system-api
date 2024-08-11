@@ -74,10 +74,10 @@ class CadastroController extends Controller
         try {
             $cadastro = Cadastro::findOrFail($id);
             $cadastro->delete();
-            $responseDto = new SuccessResponseDto(data: null, message: "Lead deletado com sucesso.");
+            $responseDto = new SuccessResponseDto(data: null, message: "Morador deletado com sucesso.");
             return \response()->json($responseDto->toArray(), StatusCode::HTTP_OK);
         } catch (ModelNotFoundException $e) {
-            $errorResponseDto = new ErrorResponseDto(error: "Morador não encontrado.", message: "Nenhum morador encontrado com o ($id) fornecido para deleção.");
+            $errorResponseDto = new ErrorResponseDto(error: "Morador não encontrado.", message: "Nenhum morador encontrado com o ID($id) fornecido para deleção.");
             return response()->json($errorResponseDto->toArray(), StatusCode::HTTP_NOT_FOUND);
         }
     }
